@@ -88,7 +88,27 @@ class Triangle extends GeometricObject {
         setFilled(filled);
     }
 
-    // implementing abstract method of abstract class   
+    /**
+     * @return the length of the first side of the triangle
+     */
+    public double getSide1() {
+        return side1;
+    }
+
+    /**
+     * @return the length of the second side of the triangle
+     */
+    public double getSide2() {
+        return side2;
+    }
+
+    /**
+     * @return the length of the third side of the triangle
+     */
+    public double getSide3() {
+        return side3;
+    }
+      
     /**
      * @return the perimeter of the triangle
      */
@@ -110,7 +130,6 @@ class Triangle extends GeometricObject {
         double S = (side1 + side2 + side3) / 2;
 
         // Finding the area of the triangle
-        // using Heron's formula
         double A = Math.sqrt(S * (S - side1) * (S - side2)* (S - side3));
         return A;
     }
