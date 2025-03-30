@@ -169,18 +169,31 @@ public class Module2Assignment2 {
         // Prompt the user to indicate if the triangle is filled
         System.out.print("Is the triangle filled (true/false)? ");
         boolean filled = input.nextBoolean();
+        try {
+            // Check if the input is valid
+            if (a < 0 || b < 0 || c < 0 || (a + b <= c) || a + c <= b || b + c <= a) {
+                System.out.println("Not a valid input");
+                System.exit(0);
+            } else {
+                // Create a Triangle object with the provided sides, color, and filled status
+                Triangle triangle = new Triangle(a, b, c, color, filled);
+                System.out.println("\n--- Triangle Details ---");
+                System.out.println(triangle.toString());
+                System.out.println("Color: " + triangle.getColor());
+                System.out.println("Filled: " + triangle.isFilled());
+                System.out.printf("Area: %.2f\n", triangle.getArea());
+                System.out.printf("Perimeter: %.2f\n", triangle.getPerimeter());
+            }
+        } catch (NullPointerException e) {
+            // Handle the case when a null value is encountered
+            System.out.println("A null value was encountered: " + e.getMessage());
+        } catch (Exception e) {
+            // Handle any other unexpected errors
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
 
-        // Create a Triangle object with the provided sides, color, and filled status
-        Triangle triangle = new Triangle(a, b, c, color, filled);
-        
-        
-        System.out.println("\n--- Triangle Details ---");
-        System.out.println(triangle.toString());
-        System.out.println("Color: " + triangle.getColor());
-        System.out.println("Filled: " + triangle.isFilled());
-        System.out.printf("Area: %.2f\n", triangle.getArea());
-        System.out.printf("Perimeter: %.2f\n", triangle.getPerimeter());
-
+        input.close();
+               
     }
 }
 
